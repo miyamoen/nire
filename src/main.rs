@@ -5,7 +5,7 @@ extern crate notify;
 
 use std::process::{Command, Stdio};
 
-use notify::{RecommendedWatcher, RecursiveMode, Watcher};
+use notify::{DebouncedEvent, RecommendedWatcher, RecursiveMode, Watcher};
 use std::sync::mpsc::channel;
 use std::time::Duration;
 
@@ -25,10 +25,12 @@ fn watch() -> notify::Result<()> {
     // for example to handle I/O.
     loop {
         match rx.recv() {
-            Ok(event) => {
-                println!("{:?}", event);
+            Ok(DebouncedEvent::Write(file)) => {
+                println!("Write: {:?}", file);
                 elm_make()
             }
+            Ok(event) => println!("{:?}", event),
+
             Err(e) => println!("watch error: {:?}", e),
         }
     }
