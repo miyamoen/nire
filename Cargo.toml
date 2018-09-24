@@ -5,3 +5,4 @@ authors = ["miyamoen <akihito.biblioteca@gmail.com>"]
 
 [dependencies]
 quicli = "0.3"
+notify = "4"
