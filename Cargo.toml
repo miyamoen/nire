@@ -1,0 +1,7 @@
+[package]
+name = "nire"
+version = "0.1.0"
+authors = ["miyamoen <akihito.biblioteca@gmail.com>"]
+
+[dependencies]
+quicli = "0.3"
